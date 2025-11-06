@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BillPay
 
-## Getting Started
+BillPay is a secure and reliable **bill payment service** built with **NextJS**, **Shadcn.ui**, **Tailwind CSS**, **Interswitch** as the payment processor, **VTPass** and **Interswitch** as the biller aggregator.
 
-First, run the development server:
+With BillPay, users can conveniently purchase **airtime, data bundles, cable TV subscriptions, and electricity tokens** while businesses can rely on a robust backend for handling transactions at scale.  
+
+---
+
+## ✨ Features
+
+- 📱 **Airtime Top-up** – Recharge any mobile line instantly.  
+- 🌐 **Data Bundles** – Buy affordable internet data plans.  
+- 📺 **Cable TV Subscription** – Renew DSTV, GOTV, Startimes, etc. with ease.  
+- ⚡ **Electricity Bills** – Pay prepaid and postpaid electricity bills, receive tokens instantly.  
+- 💳 **Interswitch Integration** – Secure payment collection and bill processing. 
+- 💳 **Interswitch and VTPass Integration** – Multi-provider bill processing support.  
+- 🕒 **24/7 Availability** – Always-on service for seamless bill payments.  
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: [Nextjs](https://nextjs.org) – scalable Node.js framework.  
+- **Payment Gateway**: [Interswitch](https://www.interswitchgroup.com/) – for biller APIs and payment collection.
+Styling: [Tailwind CSS](https://tailwindcss.com/) – utility-first CSS framework for fast, responsive UI development.
+UI Components: [shadcn/ui](https://tailwindcss.com/) – beautifully designed, accessible React components built with Radix and Tailwind.
+- **Billers**: [Interswitch](https://www.interswitchgroup.com/) and [VTPass](https://www.vtpass.com) – for biller APIs.
+- **Package Manager**: [pnpm](https://pnpm.io/) – fast, disk-efficient package manager.  
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) v22+  
+- [pnpm](https://pnpm.io/) v10+  
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/deveasyclick/billpay-web.git
+   cd billpay
+    ```
+
+2. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   pnpm dev
+   ```
+
+---
+
+## 🗂️ Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── README.md
+├── app
+│   ├── components
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── lib
+│   ├── page.tsx
+│   └── types
+├── biome.json
+├── components.json
+├── next-env.d.ts
+├── next.config.ts
+├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.mjs
+├── public
+└── tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧪 Running Tests
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Run unit tests
+pnpm run test
 
-## Learn More
+# Run e2e tests
+pnpm run test:e2e
 
-To learn more about Next.js, take a look at the following resources:
+# Test coverage
+pnpm run test:cov
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🤝 Contributing
 
-## Deploy on Vercel
+Contributions, issues, and feature requests are welcome!
+Fork the repo, open a PR, or raise an issue.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📜 License
+
+This project is licensed under the **MIT License**.
