@@ -1,65 +1,108 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+import { Lightbulb, Phone, Signal, Tv } from 'lucide-react';
+import Banner from './components/banner';
+import BillCard from './components/card/BillCard';
+import Header from './components/layouts/header';
+import { TransactionItem } from './components/transaction/TransactionItem';
+import { Transaction } from './types/transaction';
+import { Card, CardContent } from './components/ui/card';
+
+const services = [
+    { icon: Signal, title: 'Buy Data', desc: 'Instant mobile data top-up' },
+    { icon: Phone, title: 'Buy Airtime', desc: 'Recharge any mobile network' },
+    {
+        icon: Lightbulb,
+        title: 'Pay Electricity Bill',
+        desc: 'Settle your electricity bills',
+    },
+    {
+        icon: Tv,
+        title: 'Pay TV Subscription',
+        desc: 'Renew your cable subscription',
+    },
+];
+
+const transactions: Transaction[] = [
+    {
+        icon: Phone,
+        title: 'MTN Airtime',
+        date: 'Today, 10:45 AM',
+        status: 'Successful',
+        amount: '+₦1,000',
+    },
+    {
+        icon: Tv,
+        title: 'DSTV Subscription',
+        date: 'Yesterday, 03:20 PM',
+        status: 'Pending',
+        amount: '+₦5,500',
+    },
+    {
+        icon: Lightbulb,
+        title: 'Eko Electric',
+        date: 'Jan 15, 09:12 AM',
+        status: 'Successful',
+        amount: '+₦10,000',
+    },
+    {
+        icon: Signal,
+        title: 'Airtel Data',
+        date: 'Jan 14, 01:55 PM',
+        status: 'Successful',
+        amount: '+₦2,500',
+    },
+];
+
+export default function DashboardPage() {
+    return (
+        <div className='min-h-screen flex flex-col bg-background-light font-display text-[#172B4D]'>
+            <Header />
+
+            <main className='flex-grow max-w-7xl mx-auto px-6 py-8 grid lg:grid-cols-3 gap-8'>
+                <section className='lg:col-span-2'>
+                    <h2 className='text-3xl font-extrabold mb-2'>
+                        What would you like to do today?
+                    </h2>
+                    <p className='text-gray-500 mb-6'>
+                        Pay bills and purchase services instantly.
+                    </p>
+                    <div className='grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-5'>
+                        {services.map(({ icon: Icon, title, desc }) => (
+                            <BillCard
+                                key={title}
+                                title={title}
+                                description={desc}
+                                icon={Icon}
+                            />
+                        ))}
+                    </div>
+                    <Banner
+                        title='Special Offer!'
+                        description='Get 5% cashback on all electricity payments this week!'
+                    />
+                </section>
+
+                {/* Recent Transactions */}
+                <aside>
+                    <Card>
+                        <CardContent className='p-6'>
+                            <h3 className='text-xl font-semibold mb-4'>
+                                Recent Transactions
+                            </h3>
+                            <div className='space-y-4'>
+                                {transactions.map((t) => (
+                                    <TransactionItem {...t} key={t.date} />
+                                ))}
+                            </div>
+                        </CardContent>
+                    </Card>
+                </aside>
+            </main>
+
+            <footer className='py-6 text-center text-sm text-gray-400'>
+                © 2025 Billpay. All rights reserved.
+            </footer>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    );
 }
