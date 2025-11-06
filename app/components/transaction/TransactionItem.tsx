@@ -1,4 +1,4 @@
-import { TransactionStatus } from '@/app/types/transaction';
+import { TransactionStatus } from '@/types/transaction';
 import { LucideIcon } from 'lucide-react';
 
 interface TransactionItemProps {
